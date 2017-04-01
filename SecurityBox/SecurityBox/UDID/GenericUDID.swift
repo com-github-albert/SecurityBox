@@ -11,11 +11,11 @@ import UIKit
 extension UIDevice {
     
     public func genericUDID() -> String {
-        let item = Keychain(service: KeychainConfiguration.serviceName, account: kGenericUDIDKey(), accessGroup: KeychainConfiguration.accessGroup)
+        let item = PwdKeychain(service: KeychainConfiguration.serviceName, account: kGenericUDIDKey(), accessGroup: KeychainConfiguration.accessGroup)
         do {
             let udid = try item.readPassword()
             return udid
-        } catch Keychain.KeychainError.noPassword {
+        } catch PwdKeychain.PwdKeychainError.noPassword {
             do {
                 let idfv = identifierForVendor!.uuidString
                 try item.savePassword(idfv)

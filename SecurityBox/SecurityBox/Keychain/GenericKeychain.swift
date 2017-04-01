@@ -8,9 +8,9 @@
 
 import Foundation
 
-public struct Keychain {
+public struct PwdKeychain {
     
-    public enum KeychainError: Error {
+    public enum PwdKeychainError: Error {
         case noPassword
         case unexpectedPasswordData
         case unexpectedItemData
@@ -28,11 +28,14 @@ public struct Keychain {
     fileprivate let accessGroup: String?
 }
 
-public extension Keychain {
+public extension PwdKeychain {
     func readPassword() throws -> String {
-        var query = Keychain.query(service: service, account: account)
+        var query = PwdKeychain.query(service: service, account: account, accessGroup: accessGroup)
+        // Reture the attributes of the first match only.
         query[kSecMatchLimit as String] = kSecMatchLimitOne
+        // Return the attributes of the keychain item (the password is acquired in the secItemFormatToDictionary: method):.
         query[kSecReturnAttributes as String] = kCFBooleanTrue
+        // Reture the data of the keychain item.
         query[kSecReturnData as String] = kCFBooleanTrue
         
         // Try to fetch the existing keychain item that matches the query.
@@ -41,16 +44,18 @@ public extension Keychain {
             SecItemCopyMatching(query as CFDictionary, UnsafeMutablePointer($0))
         }
         
-        // Check the return status and throw an error if appropriate.
-        guard status != errSecItemNotFound else { throw KeychainError.noPassword }
-        guard status == noErr else { throw KeychainError.unhandledError(status: status) }
+        // If no items were found, throw an error.
+        guard status != errSecItemNotFound else { throw PwdKeychainError.noPassword }
+        
+        // Throw an error if an unexpected status was returned.
+        guard status == noErr else { throw PwdKeychainError.unhandledError(status: status) }
         
         // Parse the password string from the query result.
         guard let existingItem = queryResult as? [String : AnyObject],
             let passwordData = existingItem[kSecValueData as String] as? Data,
             let password = String(data: passwordData, encoding: String.Encoding.utf8)
             else {
-                throw KeychainError.unexpectedPasswordData
+                throw PwdKeychainError.unexpectedPasswordData
         }
         
         return password
@@ -64,28 +69,28 @@ public extension Keychain {
             // Check for an existing item in the keychain.
             try _ = readPassword()
             
-            // Update the existing item with the new password.
+            // Set a new password.
             var attributesToUpdate = [String : AnyObject]()
             attributesToUpdate[kSecValueData as String] = encodedPassword as AnyObject?
-            
-            let query = Keychain.query(service: service, account: account, accessGroup: accessGroup)
+            // Update the existing item.
+            let query = PwdKeychain.query(service: service, account: account, accessGroup: accessGroup)
             let status = SecItemUpdate(query as CFDictionary, attributesToUpdate as CFDictionary)
             
             // Throw an error if an unexpected status was returned.
-            guard status == noErr else { throw KeychainError.unhandledError(status: status) }
-        } catch KeychainError.noPassword {
+            guard status == noErr else { throw PwdKeychainError.unhandledError(status: status) }
+        } catch PwdKeychainError.noPassword {
             /*
              No password was found in the keychain. Create a dictionary to save
              as a new keychain item.
              */
-            var newItem = Keychain.query(service: service, account: account, accessGroup: accessGroup)
+            var newItem = PwdKeychain.query(service: service, account: account, accessGroup: accessGroup)
             newItem[kSecValueData as String] = encodedPassword as AnyObject?
             
             // Add a the new item to the keychain.
             let status = SecItemAdd(newItem as CFDictionary, nil)
             
             // Throw an error if an unexpected status was returned.
-            guard status == noErr else { throw KeychainError.unhandledError(status: status) }
+            guard status == noErr else { throw PwdKeychainError.unhandledError(status: status) }
         }
     }
     
@@ -94,31 +99,34 @@ public extension Keychain {
         var attributesToUpdate = [String : AnyObject]()
         attributesToUpdate[kSecAttrAccount as String] = newAccountName as AnyObject?
         
-        let query = Keychain.query(service: service, account: self.account, accessGroup: accessGroup)
+        let query = PwdKeychain.query(service: service, account: self.account, accessGroup: accessGroup)
         let status = SecItemUpdate(query as CFDictionary, attributesToUpdate as CFDictionary)
         
         // Throw an error if an unexpected status was returned.
-        guard status == noErr || status == errSecItemNotFound else { throw KeychainError.unhandledError(status: status) }
+        guard status == noErr || status == errSecItemNotFound else { throw PwdKeychainError.unhandledError(status: status) }
         
         self.account = newAccountName
     }
     
     func deleteItem() throws {
         // Delete the existing item from the keychain.
-        let query = Keychain.query(service: service, account: account, accessGroup: accessGroup)
+        let query = PwdKeychain.query(service: service, account: account, accessGroup: accessGroup)
         let status = SecItemDelete(query as CFDictionary)
         
         // Throw an error if an unexpected status was returned.
-        guard status == noErr || status == errSecItemNotFound else { throw KeychainError.unhandledError(status: status) }
+        guard status == noErr || status == errSecItemNotFound else { throw PwdKeychainError.unhandledError(status: status) }
     }
 }
 
-extension Keychain {
-    public static func items(service: String, account: String? = nil, accessGroup: String? = nil) throws -> [Keychain] {
+extension PwdKeychain {
+    public static func items(service: String, account: String? = nil, accessGroup: String? = nil) throws -> [PwdKeychain] {
         // Build a query for all items that match the service and access group.
-        var query = Keychain.query(service: service, account: account, accessGroup: accessGroup)
+        var query = PwdKeychain.query(service: service, account: account, accessGroup: accessGroup)
+        // Reture the attributes of the keychain item all.
         query[kSecMatchLimit as String] = kSecMatchLimitAll
+        // Return the attributes of the keychain item.
         query[kSecReturnAttributes as String] = kCFBooleanTrue
+        // Reture the data of the keychain item.
         query[kSecReturnData as String] = kCFBooleanFalse
         
         // Fetch matching items from the keychain.
@@ -131,17 +139,17 @@ extension Keychain {
         guard status != errSecItemNotFound else { return [] }
         
         // Throw an error if an unexpected status was returned.
-        guard status == noErr else { throw KeychainError.unhandledError(status: status) }
+        guard status == noErr else { throw PwdKeychainError.unhandledError(status: status) }
         
         // Cast the query result to an array of dictionaries.
-        guard let resultData = queryResult as? [[String : AnyObject]] else { throw KeychainError.unexpectedItemData }
+        guard let resultData = queryResult as? [[String : AnyObject]] else { throw PwdKeychainError.unexpectedItemData }
         
         // Create a `KeychainPasswordItem` for each dictionary in the query result.
-        var passwordItems = [Keychain]()
+        var passwordItems = [PwdKeychain]()
         for result in resultData {
-            guard let account  = result[kSecAttrAccount as String] as? String else { throw KeychainError.unexpectedItemData }
+            guard let account  = result[kSecAttrAccount as String] as? String else { throw PwdKeychainError.unexpectedItemData }
             
-            let passwordItem = Keychain(service: service, account: account, accessGroup: accessGroup)
+            let passwordItem = PwdKeychain(service: service, account: account, accessGroup: accessGroup)
             passwordItems.append(passwordItem)
         }
         
@@ -150,13 +158,15 @@ extension Keychain {
     
     fileprivate static func query(service: String, account: String? = nil, accessGroup: String? = nil) -> [String: AnyObject] {
         var query = [String: AnyObject]()
-        
+        // This keychain item is a generic password.
         query[kSecClass as String] = kSecClassGenericPassword
+        // Set keychain service
         query[kSecAttrService as String] = service as AnyObject?
-        
+        // Set keychain account
         if let account = account {
             query[kSecAttrAccount as String] = account as AnyObject?
         }
+        // Set keychain accessgroup
         if let accessGroup = accessGroup {
             query[kSecAttrAccessGroup as String] = accessGroup as AnyObject?
         }
