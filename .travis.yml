@@ -1,1 +1,8 @@
-language: swift
+language: objective-C
+osx_image: xcode8.3
+env:
+  global:
+  - WORKSPACE=SecurityBox.xcworkspace
+  - IOS_FRAMEWORK_SCHEME="SecurityBox"
+  - IOS_SDK=iphonesimulator10.0
+  - EXAMPLE_SCHEME="Example"
