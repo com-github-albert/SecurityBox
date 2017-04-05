@@ -4,5 +4,5 @@ env:
   global:
   - WORKSPACE=SecurityBox.xcworkspace
   - IOS_FRAMEWORK_SCHEME="SecurityBox"
-  - IOS_SDK=iphonesimulator10.0
   - EXAMPLE_SCHEME="Example"
+  - IOS_SDK=iphonesimulator10.0

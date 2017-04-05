@@ -7,33 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B6E98A21E94937C00CD356A /* SecurityBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E989F1E94934D00CD356A /* SecurityBox.framework */; };
+		6B6E98A31E94937C00CD356A /* SecurityBox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E989F1E94934D00CD356A /* SecurityBox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6BD2EF2F1E8F3FF000E87642 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD2EF2E1E8F3FF000E87642 /* AppDelegate.swift */; };
 		6BD2EF311E8F3FF000E87642 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD2EF301E8F3FF000E87642 /* ViewController.swift */; };
 		6BD2EF341E8F3FF000E87642 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD2EF321E8F3FF000E87642 /* Main.storyboard */; };
 		6BD2EF361E8F3FF000E87642 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD2EF351E8F3FF000E87642 /* Assets.xcassets */; };
 		6BD2EF391E8F3FF000E87642 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD2EF371E8F3FF000E87642 /* LaunchScreen.storyboard */; };
-		6BD2EF5C1E8F798600E87642 /* SecurityBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD2EF591E8F797C00E87642 /* SecurityBox.framework */; };
-		6BD2EF5D1E8F798600E87642 /* SecurityBox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD2EF591E8F797C00E87642 /* SecurityBox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6BD2EF581E8F797C00E87642 /* PBXContainerItemProxy */ = {
+		6B6E989E1E94934D00CD356A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 6BD2EF531E8F797C00E87642 /* SecurityBox.xcodeproj */;
+			containerPortal = 6B6E98991E94934D00CD356A /* SecurityBox.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 6B2E36711E8E539500A37BFA;
 			remoteInfo = SecurityBox;
 		};
-		6BD2EF5A1E8F797C00E87642 /* PBXContainerItemProxy */ = {
+		6B6E98A01E94934D00CD356A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 6BD2EF531E8F797C00E87642 /* SecurityBox.xcodeproj */;
+			containerPortal = 6B6E98991E94934D00CD356A /* SecurityBox.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 6B2E367A1E8E539500A37BFA;
 			remoteInfo = SecurityBoxTests;
 		};
-		6BD2EF5E1E8F798600E87642 /* PBXContainerItemProxy */ = {
+		6B6E98A41E94937C00CD356A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 6BD2EF531E8F797C00E87642 /* SecurityBox.xcodeproj */;
+			containerPortal = 6B6E98991E94934D00CD356A /* SecurityBox.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 6B2E36701E8E539500A37BFA;
 			remoteInfo = SecurityBox;
@@ -47,7 +47,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6BD2EF5D1E8F798600E87642 /* SecurityBox.framework in Embed Frameworks */,
+				6B6E98A31E94937C00CD356A /* SecurityBox.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,6 +55,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6B6E98991E94934D00CD356A /* SecurityBox.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SecurityBox.xcodeproj; path = ../SecurityBox.xcodeproj; sourceTree = "<group>"; };
 		6BD2EF2B1E8F3FF000E87642 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD2EF2E1E8F3FF000E87642 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BD2EF301E8F3FF000E87642 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,7 +64,6 @@
 		6BD2EF381E8F3FF000E87642 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6BD2EF3A1E8F3FF000E87642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BD2EF511E8F599F00E87642 /* Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example.entitlements; sourceTree = "<group>"; };
-		6BD2EF531E8F797C00E87642 /* SecurityBox.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SecurityBox.xcodeproj; path = ../SecurityBox/SecurityBox.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,19 +71,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BD2EF5C1E8F798600E87642 /* SecurityBox.framework in Frameworks */,
+				6B6E98A21E94937C00CD356A /* SecurityBox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B6E989A1E94934D00CD356A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6B6E989F1E94934D00CD356A /* SecurityBox.framework */,
+				6B6E98A11E94934D00CD356A /* SecurityBoxTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		6BD2EF221E8F3FF000E87642 = {
 			isa = PBXGroup;
 			children = (
 				6BD2EF2D1E8F3FF000E87642 /* Example */,
 				6BD2EF2C1E8F3FF000E87642 /* Products */,
-				6BD2EF531E8F797C00E87642 /* SecurityBox.xcodeproj */,
+				6B6E98991E94934D00CD356A /* SecurityBox.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,15 +118,6 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
-		6BD2EF541E8F797C00E87642 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6BD2EF591E8F797C00E87642 /* SecurityBox.framework */,
-				6BD2EF5B1E8F797C00E87642 /* SecurityBoxTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -133,7 +133,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				6BD2EF5F1E8F798600E87642 /* PBXTargetDependency */,
+				6B6E98A51E94937C00CD356A /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -175,8 +175,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 6BD2EF541E8F797C00E87642 /* Products */;
-					ProjectRef = 6BD2EF531E8F797C00E87642 /* SecurityBox.xcodeproj */;
+					ProductGroup = 6B6E989A1E94934D00CD356A /* Products */;
+					ProjectRef = 6B6E98991E94934D00CD356A /* SecurityBox.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -187,18 +187,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		6BD2EF591E8F797C00E87642 /* SecurityBox.framework */ = {
+		6B6E989F1E94934D00CD356A /* SecurityBox.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = SecurityBox.framework;
-			remoteRef = 6BD2EF581E8F797C00E87642 /* PBXContainerItemProxy */;
+			remoteRef = 6B6E989E1E94934D00CD356A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		6BD2EF5B1E8F797C00E87642 /* SecurityBoxTests.xctest */ = {
+		6B6E98A11E94934D00CD356A /* SecurityBoxTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = SecurityBoxTests.xctest;
-			remoteRef = 6BD2EF5A1E8F797C00E87642 /* PBXContainerItemProxy */;
+			remoteRef = 6B6E98A01E94934D00CD356A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -229,10 +229,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6BD2EF5F1E8F798600E87642 /* PBXTargetDependency */ = {
+		6B6E98A51E94937C00CD356A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SecurityBox;
-			targetProxy = 6BD2EF5E1E8F798600E87642 /* PBXContainerItemProxy */;
+			targetProxy = 6B6E98A41E94937C00CD356A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
