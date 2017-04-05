@@ -1,8 +1,6 @@
 language: objective-C
-osx_image: xcode8.3
-env:
-  global:
-  - WORKSPACE=SecurityBox.xcworkspace
-  - IOS_FRAMEWORK_SCHEME="SecurityBox"
-  - EXAMPLE_SCHEME="Example"
-  - IOS_SDK=iphonesimulator10.0
+before_install:
+  - brew update
+  - brew install xctool
+script:
+  xctool -WORKSPACE SecurityBox.xcworkspace -SCHEME SecurityBox Example
