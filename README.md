@@ -1,4 +1,5 @@
 # SecurityBox
+[![Build Status](https://travis-ci.org/CodeDrunkard/SecurityBox.svg?branch=master)](https://travis-ci.org/CodeDrunkard/SecurityBox)
 
 ## Keychain Services
 
