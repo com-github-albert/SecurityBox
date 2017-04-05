@@ -23,7 +23,11 @@ class ViewController: UIViewController {
     }
     
     func getUDID() -> String {
-        return UIDevice.current.genericUDID()
+        do {
+            return try UIDevice.current.genericUDID()
+        } catch {
+            return "generic UDID error!"
+        }
     }
 
     func queryKeychain() {

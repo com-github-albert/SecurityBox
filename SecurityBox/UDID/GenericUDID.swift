@@ -10,7 +10,12 @@ import UIKit
 
 extension UIDevice {
     
-    public func genericUDID() -> String {
+    public enum UDIDError: Error {
+        case failedSave
+        case failedRead
+    }
+    
+    public func genericUDID() throws -> String {
         let item = PwdKeychain(service: KeychainConfiguration.serviceName, account: kGenericUDIDKey(), accessGroup: KeychainConfiguration.accessGroup)
         do {
             let udid = try item.readPassword()
@@ -21,10 +26,10 @@ extension UIDevice {
                 try item.savePassword(idfv)
                 return idfv
             } catch {
-                fatalError("Error fetching save password - \(error)")
+                throw UDIDError.failedSave
             }
         } catch {
-            fatalError("Error fetching read password - \(error)")
+            throw UDIDError.failedRead
         }
     }
     
