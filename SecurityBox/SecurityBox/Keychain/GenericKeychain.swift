@@ -144,7 +144,7 @@ extension PwdKeychain {
         // Cast the query result to an array of dictionaries.
         guard let resultData = queryResult as? [[String : AnyObject]] else { throw PwdKeychainError.unexpectedItemData }
         
-        // Create a `KeychainPasswordItem` for each dictionary in the query result.
+        // Create a `PwdKeychain` for each dictionary in the query result.
         var passwordItems = [PwdKeychain]()
         for result in resultData {
             guard let account  = result[kSecAttrAccount as String] as? String else { throw PwdKeychainError.unexpectedItemData }
