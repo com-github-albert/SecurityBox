@@ -10,7 +10,7 @@ import UIKit
 import SecurityBox
 
 class ViewController: UIViewController {
-    
+
     let account = "com.jt.security.kGenericUDIDKey"
 
     override func viewDidLoad() {
@@ -32,7 +32,8 @@ class ViewController: UIViewController {
 
     func queryKeychain() {
         do {
-            let items = try PwdKeychain.items(service: KeychainConfiguration.serviceName, accessGroup: KeychainConfiguration.accessGroup)
+            let items = try PwdKeychain.items(service: KeychainConfiguration.serviceName,
+                                              accessGroup: KeychainConfiguration.accessGroup)
             for item in items {
                 print(item.account)
             }
@@ -42,7 +43,9 @@ class ViewController: UIViewController {
     }
     
     func deleteKeychainItem() {
-        let item = PwdKeychain(service: KeychainConfiguration.serviceName, account: account, accessGroup: KeychainConfiguration.accessGroup)
+        let item = PwdKeychain(service: KeychainConfiguration.serviceName,
+                               account: account,
+                               accessGroup: KeychainConfiguration.accessGroup)
         do {
             try item.deleteItem()
         } catch {
@@ -51,7 +54,9 @@ class ViewController: UIViewController {
     }
     
     func renameAccount() {
-        var item = PwdKeychain(service: KeychainConfiguration.serviceName, account: account, accessGroup: KeychainConfiguration.accessGroup)
+        var item = PwdKeychain(service: KeychainConfiguration.serviceName,
+                               account: account,
+                               accessGroup: KeychainConfiguration.accessGroup)
         do {
             try item.renameAccount("com.jt.security.NewAccount")
             try item.savePassword("new password")
@@ -61,4 +66,3 @@ class ViewController: UIViewController {
     }
 
 }
-

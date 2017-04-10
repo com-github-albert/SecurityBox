@@ -23,7 +23,7 @@ public struct GenericCloud {
 }
 
 extension GenericCloud {
-    func checkAccountAvailable(success: @escaping ()->()) {
+    func checkAccountAvailable(success: @escaping () -> Void) {
         container.accountStatus { (status, error) in
             guard error != nil else { return }
             
@@ -47,7 +47,7 @@ extension GenericCloud {
         }
     }
     
-    func requestDiscoverabilityPermission(success: ()->()) {
+    func requestDiscoverabilityPermission(success: () -> Void) {
         
     }
 }
