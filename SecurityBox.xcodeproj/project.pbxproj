@@ -13,6 +13,7 @@
 		6B2E36901E8E53AF00A37BFA /* GenericKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2E368C1E8E53AF00A37BFA /* GenericKeychain.swift */; };
 		6B2E36911E8E53AF00A37BFA /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2E368D1E8E53AF00A37BFA /* KeychainConfiguration.swift */; };
 		6B2E36921E8E53AF00A37BFA /* GenericUDID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2E368F1E8E53AF00A37BFA /* GenericUDID.swift */; };
+		6B6E98FD1E94E12D00CD356A /* GenericCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6E98FC1E94E12D00CD356A /* GenericCloud.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		6B2E368C1E8E53AF00A37BFA /* GenericKeychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericKeychain.swift; sourceTree = "<group>"; };
 		6B2E368D1E8E53AF00A37BFA /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainConfiguration.swift; sourceTree = "<group>"; };
 		6B2E368F1E8E53AF00A37BFA /* GenericUDID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUDID.swift; sourceTree = "<group>"; };
+		6B6E98FC1E94E12D00CD356A /* GenericCloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCloud.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				6B2E36751E8E539500A37BFA /* Info.plist */,
 				6B2E368B1E8E53AF00A37BFA /* Keychain */,
 				6B2E368E1E8E53AF00A37BFA /* UDID */,
+				6B6E98FB1E94E10B00CD356A /* iCloud */,
 			);
 			path = SecurityBox;
 			sourceTree = "<group>";
@@ -109,6 +112,14 @@
 				6B2E368F1E8E53AF00A37BFA /* GenericUDID.swift */,
 			);
 			path = UDID;
+			sourceTree = "<group>";
+		};
+		6B6E98FB1E94E10B00CD356A /* iCloud */ = {
+			isa = PBXGroup;
+			children = (
+				6B6E98FC1E94E12D00CD356A /* GenericCloud.swift */,
+			);
+			path = iCloud;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +237,7 @@
 				6B2E36911E8E53AF00A37BFA /* KeychainConfiguration.swift in Sources */,
 				6B2E36901E8E53AF00A37BFA /* GenericKeychain.swift in Sources */,
 				6B2E36921E8E53AF00A37BFA /* GenericUDID.swift in Sources */,
+				6B6E98FD1E94E12D00CD356A /* GenericCloud.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
