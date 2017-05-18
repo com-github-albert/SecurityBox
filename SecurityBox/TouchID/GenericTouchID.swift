@@ -11,8 +11,15 @@ import LocalAuthentication
 
 public struct GenericTouchID {
     
+    public var localizedReason = "Logging in with Touch ID"
+    
     private let context = LAContext()
-    let localozedReasionString = "Logging in with Touch ID"
+    
+    public init() {}
+    
+    public init(_ localizedReason: String) {
+        self.localizedReason = localizedReason
+    }
     
     public func canEvaluatePolicy() -> Bool {
         return context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
@@ -24,7 +31,7 @@ public struct GenericTouchID {
         }
         
         context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
-                               localizedReason: localozedReasionString) { (success, error) in
+                               localizedReason: localizedReason) { (success, error) in
                                 if success {
                                     DispatchQueue.main.async {
                                         completion(nil)

@@ -12,7 +12,8 @@ import SecurityBox
 class ViewController: UIViewController {
 
     let account = "com.jt.security.kGenericUDIDKey"
-
+    let touchID = GenericTouchID()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +21,20 @@ class ViewController: UIViewController {
         print(getUDID())
 //        renameAccount()
 //        deleteKeychainItem()
+        
+        touchID.authenticate { (message) in
+            if let message = message {
+                // if the completion is not nil show an alert
+                let alertView = UIAlertController(title: "Error",
+                                                  message: message,
+                                                  preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Darn!", style: .default)
+                alertView.addAction(okAction)
+                self.present(alertView, animated: true)
+            } else {
+                print("Logging in with Touch ID Successful!")
+            }
+        }
     }
     
     func getUDID() -> String {
